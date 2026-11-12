@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#176b57">
+  <title>همرسان | پیام‌رسان</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="loginView" class="login-wrap">
+    <form id="loginForm" class="login-card">
+      <div class="brand-mark">هـ</div><h1>همرسان</h1><p>پیام‌رسان خصوصی شما</p>
+      <label>نام کاربری<input id="username" autocomplete="username" placeholder="مثلاً user01" required></label>
+      <label>رمز عبور<input id="password" type="password" autocomplete="current-password" placeholder="رمز عبور" required></label>
+      <button class="primary" type="submit">ورود به همرسان</button><div id="loginError" class="error"></div>
+      <small>برای حساب‌های اولیه، راهنمای README را ببینید.</small>
+    </form>
+  </div>
+  <main id="appView" class="app hidden">
+    <aside class="sidebar">
+      <header class="side-head"><div class="brand-mark small">هـ</div><div><b>همرسان</b><small id="myName"></small></div><button id="logoutBtn" class="icon-btn" title="خروج">↪</button></header>
+      <div class="side-actions"><button id="newDirect">گفت‌وگوی جدید ＋</button><button id="newGroup">گروه جدید ＋</button></div>
+      <div class="section-label">گفت‌وگوها</div><div id="conversationList" class="conversation-list"></div>
+      <div class="side-foot">همرسان · ارتباط ساده و امن</div>
+    </aside>
+    <section class="chat-panel">
+      <div id="emptyState" class="empty-state"><div class="empty-icon">✉</div><h2>به همرسان خوش آمدید</h2><p>یک گفت‌وگو را انتخاب کنید یا گفت‌وگوی تازه بسازید.</p></div>
+      <div id="chatView" class="hidden chat-view">
+        <header class="chat-head"><div class="avatar" id="chatAvatar">هـ</div><div><b id="chatTitle"></b><small id="chatSubtitle">گفت‌وگوی همرسان</small></div></header>
+        <div id="messages" class="messages"></div>
+        <form id="sendForm" class="composer"><label class="attach" title="ارسال فایل">＋<input id="fileInput" type="file" hidden></label><input id="messageInput" placeholder="پیام خود را بنویسید..." maxlength="5000" autocomplete="off"><button class="send-btn">ارسال</button></form>
+      </div>
+    </section>
+  </main>
+  <dialog id="userDialog"><form method="dialog" class="dialog-card"><h3>گفت‌وگوی جدید</h3><div id="userChoices"></div><div class="dialog-actions"><button class="quiet">بستن</button></div></form></dialog>
+  <dialog id="groupDialog"><form id="groupForm" class="dialog-card"><h3>ساخت گروه</h3><input id="groupTitle" placeholder="نام گروه" maxlength="60" required><p>اعضای گروه را انتخاب کنید:</p><div id="groupChoices"></div><div class="dialog-actions"><button type="button" class="quiet" id="cancelGroup">انصراف</button><button class="primary">ساخت گروه</button></div></form></dialog>
+  <div id="toast" class="toast"></div>
+  <script src="/socket.io/socket.io.js"></script><script src="/app.js"></script>
+</body></html>
